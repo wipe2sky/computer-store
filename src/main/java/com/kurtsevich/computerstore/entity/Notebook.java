@@ -1,32 +1,22 @@
 package com.kurtsevich.computerstore.entity;
 
+import com.kurtsevich.computerstore.entity.enums.ScreenSize;
 import jakarta.persistence.Entity;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
+@SuperBuilder
+@NoArgsConstructor
 @Entity
 public class Notebook extends AbstractProduct {
 
-    @NotNull(message = "Screen size can't be null")
+    @Enumerated(EnumType.STRING)
     private ScreenSize screenSize;
 
-    public enum ScreenSize {
-        THIRTEEN("13\""),
-        FOURTEEN("14\""),
-        FIFTEEN("15\""),
-        SIXTEEN("16\"");
-
-        ScreenSize(String value) {
-            this.value = value;
-        }
-
-        private final String value;
-
-        public String getValue() {
-            return value;
-        }
-    }
 }

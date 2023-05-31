@@ -1,24 +1,24 @@
 package com.kurtsevich.computerstore.entity;
 
+import com.kurtsevich.computerstore.entity.enums.ComputerType;
 import jakarta.persistence.Entity;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
+@SuperBuilder
+@NoArgsConstructor
 @Entity
 public class Computer extends AbstractProduct {
 
-    @NotNull(message = "Type can't be null")
-    private Type type;
+    @Enumerated(EnumType.STRING)
+    private ComputerType computerType;
 
-
-    public enum Type {
-        DESKTOP,
-        NET_TOP,
-        MONO_BLOCK
-    }
 }
 
 
