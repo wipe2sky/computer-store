@@ -10,6 +10,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 public class HddDto extends BaseProductDto{
-    private int capacity;
+    private Integer capacity;
 
 }

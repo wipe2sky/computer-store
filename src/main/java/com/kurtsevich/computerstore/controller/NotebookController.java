@@ -1,8 +1,7 @@
 package com.kurtsevich.computerstore.controller;
 
-import com.kurtsevich.computerstore.dto.ComputerDto;
-import com.kurtsevich.computerstore.entity.enums.ComputerType;
-import com.kurtsevich.computerstore.service.ComputerService;
+import com.kurtsevich.computerstore.dto.NotebookDto;
+import com.kurtsevich.computerstore.service.NotebookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,35 +18,35 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products/computers")
+@RequestMapping("/api/products/notebooks")
 @RequiredArgsConstructor
-public class ComputerController {
-    private final ComputerService computerService;
+public class NotebookController {
+    private final NotebookService notebookService;
 
     @GetMapping("/{id}")
-    public ComputerDto findBySerialNumber(@PathVariable Long id){
-        return computerService.findById(id);
+    public NotebookDto findById(@PathVariable Long id){
+        return notebookService.findById(id);
     }
 
     @GetMapping
-    public List<ComputerDto> findAll(@RequestParam(required = false) ComputerType type){
-        return  computerService.findAll(type);
+    public List<NotebookDto> findAll(@RequestParam(required = false) Integer screenSize){
+        return  notebookService.findAll(screenSize);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ComputerDto create(@RequestBody ComputerDto computerDto){
-        return computerService.create(computerDto);
+    public NotebookDto create(@RequestBody NotebookDto notebookDto){
+        return notebookService.create(notebookDto);
     }
 
     @PutMapping
-    public ComputerDto update(@RequestBody ComputerDto computerDto){
-        return computerService.update(computerDto);
+    public NotebookDto update(@RequestBody NotebookDto notebookDto){
+        return notebookService.update(notebookDto);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
-        computerService.delete(id);
+        notebookService.delete(id);
     }
 }

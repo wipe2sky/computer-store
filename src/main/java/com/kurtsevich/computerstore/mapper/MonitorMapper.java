@@ -7,10 +7,25 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MonitorMapper {
-    Monitor toEntity(MonitorDto dto){
-        return null;
+    public Monitor toEntity(MonitorDto dto) {
+        return Monitor.builder()
+                .id(dto.getId())
+                .seriesNumber(dto.getSeriesNumber())
+                .producer(dto.getProducer())
+                .diagonal(dto.getDiagonal())
+                .price(dto.getPrice())
+                .count(dto.getCount())
+                .build();
     }
-    MonitorDto toDto(Monitor entity){
-        return null;
+
+    public MonitorDto toDto(Monitor entity) {
+        return MonitorDto.builder()
+                .id(entity.getId())
+                .seriesNumber(entity.getSeriesNumber())
+                .producer(entity.getProducer())
+                .diagonal(entity.getDiagonal())
+                .price(entity.getPrice())
+                .count(entity.getCount())
+                .build();
     }
 }

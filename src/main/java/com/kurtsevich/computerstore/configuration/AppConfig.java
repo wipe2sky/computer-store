@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Configuration
 public class AppConfig {
@@ -26,7 +25,7 @@ public class AppConfig {
         return args -> {
             computerRepository.save(Computer.builder()
                                             .computerType(ComputerType.DESKTOP)
-                                            .serialNumber(UUID.randomUUID().toString())
+                                            .seriesNumber("MPR")
                                             .producer("Sony")
                                             .price(BigDecimal.valueOf(100))
                                             .count(3)
@@ -34,7 +33,7 @@ public class AppConfig {
 
             computerRepository.save(Computer.builder()
                                             .computerType(ComputerType.NET_TOP)
-                                            .serialNumber(UUID.randomUUID().toString())
+                                            .seriesNumber("MPR")
                                             .producer("Dell")
                                             .price(BigDecimal.valueOf(150))
                                             .count(5)
@@ -42,70 +41,70 @@ public class AppConfig {
 
             computerRepository.save(Computer.builder()
                                             .computerType(ComputerType.MONO_BLOCK)
-                                            .serialNumber(UUID.randomUUID().toString())
+                                            .seriesNumber("MPR")
                                             .producer("HP")
                                             .price(BigDecimal.valueOf(250))
                                             .count(10)
                                             .build());
             hddRepository.save(Hdd.builder()
                                        .capacity(256)
-                                       .serialNumber(UUID.randomUUID().toString())
+                                       .seriesNumber("MPR")
                                        .producer("WD")
                                        .price(BigDecimal.valueOf(74.2))
                                        .count(3)
                                        .build());
             hddRepository.save(Hdd.builder()
                                        .capacity(512)
-                                       .serialNumber(UUID.randomUUID().toString())
+                                       .seriesNumber("MPR")
                                        .producer("Samsung")
                                        .price(BigDecimal.valueOf(114.5))
                                        .count(1)
                                        .build());
             hddRepository.save(Hdd.builder()
                                        .capacity(1024)
-                                       .serialNumber(UUID.randomUUID().toString())
+                                       .seriesNumber("MPR")
                                        .producer("WD")
                                        .price(BigDecimal.valueOf(200))
                                        .count(6)
                                        .build());
             monitorRepository.save(Monitor.builder()
                                            .diagonal(24)
-                                           .serialNumber(UUID.randomUUID().toString())
+                                           .seriesNumber("MPR")
                                            .producer("Sony")
                                            .price(BigDecimal.valueOf(222))
                                            .count(12)
                                            .build());
             monitorRepository.save(Monitor.builder()
                                            .diagonal(31)
-                                           .serialNumber(UUID.randomUUID().toString())
+                                           .seriesNumber("MPR")
                                            .producer("HP")
                                            .price(BigDecimal.valueOf(333))
                                            .count(1)
                                            .build());
             monitorRepository.save(Monitor.builder()
                                            .diagonal(27)
-                                           .serialNumber(UUID.randomUUID().toString())
+                                           .seriesNumber("MPR")
                                            .producer("Sony")
                                            .price(BigDecimal.valueOf(444))
                                            .count(22)
                                            .build());
             notebookRepository.save(Notebook.builder()
                                             .screenSize(ScreenSize.getByValue(13))
-                                            .serialNumber(UUID.randomUUID().toString())
+                                            .seriesNumber("MPR")
                                             .producer("Apple")
                                             .price(BigDecimal.valueOf(1222))
                                             .count(2)
                                             .build());
             notebookRepository.save(Notebook.builder()
                                             .screenSize(ScreenSize.getByValue(15))
-                                            .serialNumber(UUID.randomUUID().toString())
+                                            .seriesNumber("MPR")
                                             .producer("HP")
                                             .price(BigDecimal.valueOf(717))
                                             .count(22)
                                             .build());
             notebookRepository.save(Notebook.builder()
                                             .screenSize(ScreenSize.getByValue(17))
-                                            .serialNumber(UUID.randomUUID().toString())
+                                            .seriesNumber("MPR")
                                             .producer("Lenovo")
                                             .price(BigDecimal.valueOf(800))
                                             .count(9)

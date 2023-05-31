@@ -1,11 +1,11 @@
 package com.kurtsevich.computerstore.service;
 
-import com.kurtsevich.computerstore.dto.ComputerDto;
-import com.kurtsevich.computerstore.entity.Computer;
-import com.kurtsevich.computerstore.entity.enums.ComputerType;
+import com.kurtsevich.computerstore.dto.NotebookDto;
+import com.kurtsevich.computerstore.entity.Notebook;
+import com.kurtsevich.computerstore.entity.enums.ScreenSize;
 import com.kurtsevich.computerstore.exceptions.NotFoundException;
-import com.kurtsevich.computerstore.mapper.ComputerMapper;
-import com.kurtsevich.computerstore.repository.ComputerRepository;
+import com.kurtsevich.computerstore.mapper.NotebookMapper;
+import com.kurtsevich.computerstore.repository.NotebookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,33 +15,33 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ComputerService {
-    private final ComputerRepository repository;
-    private final ComputerMapper mapper;
+public class NotebookService {
+    private final NotebookRepository repository;
+    private final NotebookMapper mapper;
 
 
-    public ComputerDto findById(Long id) {
-        Computer computer = repository.findById(id)
+    public NotebookDto findById(Long id) {
+        Notebook notebook = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Entity with id " + id + " not found"));
-        return mapper.toDto(computer);
+        return mapper.toDto(notebook);
     }
 
-    public List<ComputerDto> findAll(ComputerType type) {
-        return (type == null
+    public List<NotebookDto> findAll(Integer screenSize) {
+        return (screenSize == null
                 ? repository.findAll()
-                : repository.findAllByComputerType(type)
+                : repository.findAllByScreenSize(ScreenSize.getByValue(screenSize))
         ).stream()
                 .map(mapper::toDto)
                 .toList();
     }
 
     @Transactional
-    public ComputerDto create(ComputerDto dto) {
+    public NotebookDto create(NotebookDto dto) {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
     @Transactional
-    public ComputerDto update(ComputerDto dto) {
+    public NotebookDto update(NotebookDto dto) {
         if (repository.findById(dto.getId()).isEmpty()) {
             throw new NotFoundException("Entity with id " + dto.getId() + " not found");
         }

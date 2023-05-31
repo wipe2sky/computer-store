@@ -1,6 +1,5 @@
 package com.kurtsevich.computerstore.dto;
 
-import com.kurtsevich.computerstore.entity.enums.ScreenSize;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -11,6 +10,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 public class NotebookDto extends BaseProductDto {
-    private ScreenSize screenSize;
+    private Integer screenSize;
 
 }

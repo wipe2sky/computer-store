@@ -15,5 +15,5 @@ import lombok.experimental.SuperBuilder;
 public class Hdd extends AbstractProduct {
 
     @Min(value = 16, message = "Capacity must be greater than 16GB")
-    private int capacity;
+    private Integer capacity;
 }

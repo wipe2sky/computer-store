@@ -17,6 +17,6 @@ public class Monitor extends AbstractProduct {
 
     @Digits(integer = 999, fraction = 0, message = "Diagonal must be greater than 1 and less than 999")
     @Min(1)
-    private int diagonal;
+    private Integer diagonal;
 
 }

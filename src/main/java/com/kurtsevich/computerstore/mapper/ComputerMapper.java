@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 public class ComputerMapper {
     public Computer toEntity(ComputerDto dto) {
         return Computer.builder()
-                .serialNumber(dto.getSerialNumber())
+                .id(dto.getId())
+                .seriesNumber(dto.getSeriesNumber())
                 .producer(dto.getProducer())
                 .computerType(dto.getComputerType())
                 .price(dto.getPrice())
@@ -19,7 +20,8 @@ public class ComputerMapper {
 
     public ComputerDto toDto(Computer entity) {
         return ComputerDto.builder()
-                .serialNumber(entity.getSerialNumber())
+                .id(entity.getId())
+                .seriesNumber(entity.getSeriesNumber())
                 .producer(entity.getProducer())
                 .computerType(entity.getComputerType())
                 .price(entity.getPrice())

@@ -1,8 +1,7 @@
 package com.kurtsevich.computerstore.controller;
 
-import com.kurtsevich.computerstore.dto.ComputerDto;
-import com.kurtsevich.computerstore.entity.enums.ComputerType;
-import com.kurtsevich.computerstore.service.ComputerService;
+import com.kurtsevich.computerstore.dto.MonitorDto;
+import com.kurtsevich.computerstore.service.MonitorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,35 +18,35 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products/computers")
+@RequestMapping("/api/products/monitors")
 @RequiredArgsConstructor
-public class ComputerController {
-    private final ComputerService computerService;
+public class MonitorController {
+    private final MonitorService monitorService;
 
     @GetMapping("/{id}")
-    public ComputerDto findBySerialNumber(@PathVariable Long id){
-        return computerService.findById(id);
+    public MonitorDto findById(@PathVariable Long id){
+        return monitorService.findById(id);
     }
 
     @GetMapping
-    public List<ComputerDto> findAll(@RequestParam(required = false) ComputerType type){
-        return  computerService.findAll(type);
+    public List<MonitorDto> findAll(@RequestParam(required = false) Integer diagonal){
+        return  monitorService.findAll(diagonal);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ComputerDto create(@RequestBody ComputerDto computerDto){
-        return computerService.create(computerDto);
+    public MonitorDto create(@RequestBody MonitorDto monitorDto){
+        return monitorService.create(monitorDto);
     }
 
     @PutMapping
-    public ComputerDto update(@RequestBody ComputerDto computerDto){
-        return computerService.update(computerDto);
+    public MonitorDto update(@RequestBody MonitorDto monitorDto){
+        return monitorService.update(monitorDto);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
-        computerService.delete(id);
+        monitorService.delete(id);
     }
 }

@@ -10,7 +10,9 @@ import java.math.BigDecimal;
 @SuperBuilder
 @NoArgsConstructor
 public class BaseProductDto {
-    private String serialNumber;
+    private Long id;
+
+    private String seriesNumber;
 
     private String producer;
 

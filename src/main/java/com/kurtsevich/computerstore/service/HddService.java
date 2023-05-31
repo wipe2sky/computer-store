@@ -1,11 +1,10 @@
 package com.kurtsevich.computerstore.service;
 
-import com.kurtsevich.computerstore.dto.ComputerDto;
-import com.kurtsevich.computerstore.entity.Computer;
-import com.kurtsevich.computerstore.entity.enums.ComputerType;
+import com.kurtsevich.computerstore.dto.HddDto;
+import com.kurtsevich.computerstore.entity.Hdd;
 import com.kurtsevich.computerstore.exceptions.NotFoundException;
-import com.kurtsevich.computerstore.mapper.ComputerMapper;
-import com.kurtsevich.computerstore.repository.ComputerRepository;
+import com.kurtsevich.computerstore.mapper.HddMapper;
+import com.kurtsevich.computerstore.repository.HddRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,33 +14,33 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ComputerService {
-    private final ComputerRepository repository;
-    private final ComputerMapper mapper;
+public class HddService {
+    private final HddRepository repository;
+    private final HddMapper mapper;
 
 
-    public ComputerDto findById(Long id) {
-        Computer computer = repository.findById(id)
+    public HddDto findById(Long id) {
+        Hdd hdd = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Entity with id " + id + " not found"));
-        return mapper.toDto(computer);
+        return mapper.toDto(hdd);
     }
 
-    public List<ComputerDto> findAll(ComputerType type) {
-        return (type == null
+    public List<HddDto> findAll(Integer capacity) {
+        return (capacity == null
                 ? repository.findAll()
-                : repository.findAllByComputerType(type)
+                : repository.findAllByCapacity(capacity)
         ).stream()
                 .map(mapper::toDto)
                 .toList();
     }
 
     @Transactional
-    public ComputerDto create(ComputerDto dto) {
+    public HddDto create(HddDto dto) {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
     @Transactional
-    public ComputerDto update(ComputerDto dto) {
+    public HddDto update(HddDto dto) {
         if (repository.findById(dto.getId()).isEmpty()) {
             throw new NotFoundException("Entity with id " + dto.getId() + " not found");
         }

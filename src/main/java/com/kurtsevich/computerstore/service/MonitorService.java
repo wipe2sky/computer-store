@@ -1,11 +1,10 @@
 package com.kurtsevich.computerstore.service;
 
-import com.kurtsevich.computerstore.dto.ComputerDto;
-import com.kurtsevich.computerstore.entity.Computer;
-import com.kurtsevich.computerstore.entity.enums.ComputerType;
+import com.kurtsevich.computerstore.dto.MonitorDto;
+import com.kurtsevich.computerstore.entity.Monitor;
 import com.kurtsevich.computerstore.exceptions.NotFoundException;
-import com.kurtsevich.computerstore.mapper.ComputerMapper;
-import com.kurtsevich.computerstore.repository.ComputerRepository;
+import com.kurtsevich.computerstore.mapper.MonitorMapper;
+import com.kurtsevich.computerstore.repository.MonitorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,33 +14,33 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ComputerService {
-    private final ComputerRepository repository;
-    private final ComputerMapper mapper;
+public class MonitorService {
+    private final MonitorRepository repository;
+    private final MonitorMapper mapper;
 
 
-    public ComputerDto findById(Long id) {
-        Computer computer = repository.findById(id)
+    public MonitorDto findById(Long id) {
+        Monitor monitor = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Entity with id " + id + " not found"));
-        return mapper.toDto(computer);
+        return mapper.toDto(monitor);
     }
 
-    public List<ComputerDto> findAll(ComputerType type) {
-        return (type == null
+    public List<MonitorDto> findAll(Integer diagonal) {
+        return (diagonal == null
                 ? repository.findAll()
-                : repository.findAllByComputerType(type)
+                : repository.findAllByDiagonal(diagonal)
         ).stream()
                 .map(mapper::toDto)
                 .toList();
     }
 
     @Transactional
-    public ComputerDto create(ComputerDto dto) {
+    public MonitorDto create(MonitorDto dto) {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
     @Transactional
-    public ComputerDto update(ComputerDto dto) {
+    public MonitorDto update(MonitorDto dto) {
         if (repository.findById(dto.getId()).isEmpty()) {
             throw new NotFoundException("Entity with id " + dto.getId() + " not found");
         }

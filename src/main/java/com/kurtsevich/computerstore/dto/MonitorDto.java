@@ -10,6 +10,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 public class MonitorDto extends BaseProductDto{
-    private int diagonal;
+    private Integer diagonal;
 
 }

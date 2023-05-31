@@ -1,8 +1,7 @@
 package com.kurtsevich.computerstore.controller;
 
-import com.kurtsevich.computerstore.dto.ComputerDto;
-import com.kurtsevich.computerstore.entity.enums.ComputerType;
-import com.kurtsevich.computerstore.service.ComputerService;
+import com.kurtsevich.computerstore.dto.HddDto;
+import com.kurtsevich.computerstore.service.HddService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,35 +18,35 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products/computers")
+@RequestMapping("/api/products/hdds")
 @RequiredArgsConstructor
-public class ComputerController {
-    private final ComputerService computerService;
+public class HddController {
+    private final HddService hddService;
 
     @GetMapping("/{id}")
-    public ComputerDto findBySerialNumber(@PathVariable Long id){
-        return computerService.findById(id);
+    public HddDto findById(@PathVariable Long id){
+        return hddService.findById(id);
     }
 
     @GetMapping
-    public List<ComputerDto> findAll(@RequestParam(required = false) ComputerType type){
-        return  computerService.findAll(type);
+    public List<HddDto> findAll(@RequestParam(required = false) Integer capacity){
+        return  hddService.findAll(capacity);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ComputerDto create(@RequestBody ComputerDto computerDto){
-        return computerService.create(computerDto);
+    public HddDto create(@RequestBody HddDto hddDto){
+        return hddService.create(hddDto);
     }
 
     @PutMapping
-    public ComputerDto update(@RequestBody ComputerDto computerDto){
-        return computerService.update(computerDto);
+    public HddDto update(@RequestBody HddDto hddDto){
+        return hddService.update(hddDto);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
-        computerService.delete(id);
+        hddService.delete(id);
     }
 }

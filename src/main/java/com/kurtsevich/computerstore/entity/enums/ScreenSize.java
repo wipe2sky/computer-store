@@ -1,24 +1,26 @@
 package com.kurtsevich.computerstore.entity.enums;
 
+import java.util.Objects;
+
 public enum ScreenSize {
     THIRTEEN(13),
     FOURTEEN(14),
     FIFTEEN(15),
     SEVENTEEN(17);
 
-    ScreenSize(int value) {
+    ScreenSize(Integer value) {
         this.value = value;
     }
 
-    private final int value;
+    private final Integer value;
 
-    public int getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    public static ScreenSize getByValue(int value) {
+    public static ScreenSize getByValue(Integer value) {
         for (ScreenSize screenSize : ScreenSize.values()) {
-            if (screenSize.value == value) {
+            if (Objects.equals(screenSize.value, value)) {
                 return screenSize;
             }
         }
