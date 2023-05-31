@@ -2,6 +2,7 @@ package com.kurtsevich.computerstore.controller;
 
 import com.kurtsevich.computerstore.dto.MonitorDto;
 import com.kurtsevich.computerstore.service.MonitorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,12 +36,12 @@ public class MonitorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MonitorDto create(@RequestBody MonitorDto monitorDto){
+    public MonitorDto create(@RequestBody @Valid MonitorDto monitorDto){
         return monitorService.create(monitorDto);
     }
 
     @PutMapping
-    public MonitorDto update(@RequestBody MonitorDto monitorDto){
+    public MonitorDto update(@RequestBody @Valid MonitorDto monitorDto){
         return monitorService.update(monitorDto);
     }
 

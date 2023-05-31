@@ -1,7 +1,7 @@
 package com.kurtsevich.computerstore.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.validation.constraints.Min;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -14,6 +14,6 @@ import lombok.experimental.SuperBuilder;
 @Entity
 public class Hdd extends AbstractProduct {
 
-    @Min(value = 16, message = "Capacity must be greater than 16GB")
+    @Column(nullable = false)
     private Integer capacity;
 }

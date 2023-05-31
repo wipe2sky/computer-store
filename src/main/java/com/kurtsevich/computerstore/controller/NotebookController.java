@@ -2,6 +2,7 @@ package com.kurtsevich.computerstore.controller;
 
 import com.kurtsevich.computerstore.dto.NotebookDto;
 import com.kurtsevich.computerstore.service.NotebookService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,12 +36,12 @@ public class NotebookController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public NotebookDto create(@RequestBody NotebookDto notebookDto){
+    public NotebookDto create(@RequestBody @Valid NotebookDto notebookDto){
         return notebookService.create(notebookDto);
     }
 
     @PutMapping
-    public NotebookDto update(@RequestBody NotebookDto notebookDto){
+    public NotebookDto update(@RequestBody @Valid NotebookDto notebookDto){
         return notebookService.update(notebookDto);
     }
 

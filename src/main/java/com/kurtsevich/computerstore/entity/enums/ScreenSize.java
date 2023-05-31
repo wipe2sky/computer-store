@@ -1,5 +1,7 @@
 package com.kurtsevich.computerstore.entity.enums;
 
+import com.kurtsevich.computerstore.exceptions.MapperException;
+
 import java.util.Objects;
 
 public enum ScreenSize {
@@ -24,6 +26,6 @@ public enum ScreenSize {
                 return screenSize;
             }
         }
-        throw new IllegalArgumentException("Invalid ScreenSize value: " + value);
+        throw new MapperException("Invalid ScreenSize value: " + value);
     }
 }

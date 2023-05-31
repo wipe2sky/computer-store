@@ -3,6 +3,7 @@ package com.kurtsevich.computerstore.controller;
 import com.kurtsevich.computerstore.dto.ComputerDto;
 import com.kurtsevich.computerstore.entity.enums.ComputerType;
 import com.kurtsevich.computerstore.service.ComputerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,12 +37,12 @@ public class ComputerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ComputerDto create(@RequestBody ComputerDto computerDto){
+    public ComputerDto create(@RequestBody @Valid ComputerDto computerDto){
         return computerService.create(computerDto);
     }
 
     @PutMapping
-    public ComputerDto update(@RequestBody ComputerDto computerDto){
+    public ComputerDto update(@RequestBody @Valid ComputerDto computerDto){
         return computerService.update(computerDto);
     }
 

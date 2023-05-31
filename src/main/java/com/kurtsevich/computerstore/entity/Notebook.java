@@ -1,6 +1,7 @@
 package com.kurtsevich.computerstore.entity;
 
 import com.kurtsevich.computerstore.entity.enums.ScreenSize;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -17,6 +18,7 @@ import lombok.experimental.SuperBuilder;
 public class Notebook extends AbstractProduct {
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private ScreenSize screenSize;
 
 }

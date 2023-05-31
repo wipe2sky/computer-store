@@ -2,6 +2,7 @@ package com.kurtsevich.computerstore.controller;
 
 import com.kurtsevich.computerstore.dto.HddDto;
 import com.kurtsevich.computerstore.service.HddService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,12 +36,12 @@ public class HddController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public HddDto create(@RequestBody HddDto hddDto){
+    public HddDto create(@RequestBody @Valid HddDto hddDto){
         return hddService.create(hddDto);
     }
 
     @PutMapping
-    public HddDto update(@RequestBody HddDto hddDto){
+    public HddDto update(@RequestBody @Valid HddDto hddDto){
         return hddService.update(hddDto);
     }
 
