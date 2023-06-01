@@ -1,4 +1,4 @@
-package com.kurtsevich.computerstore.exceptions;
+package com.kurtsevich.computerstore.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;

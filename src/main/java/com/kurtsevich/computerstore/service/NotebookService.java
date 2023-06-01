@@ -3,7 +3,7 @@ package com.kurtsevich.computerstore.service;
 import com.kurtsevich.computerstore.dto.NotebookDto;
 import com.kurtsevich.computerstore.entity.Notebook;
 import com.kurtsevich.computerstore.entity.enums.ScreenSize;
-import com.kurtsevich.computerstore.exceptions.NotFoundException;
+import com.kurtsevich.computerstore.exception.NotFoundException;
 import com.kurtsevich.computerstore.mapper.NotebookMapper;
 import com.kurtsevich.computerstore.repository.NotebookRepository;
 import lombok.RequiredArgsConstructor;

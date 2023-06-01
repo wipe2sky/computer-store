@@ -3,7 +3,7 @@ package com.kurtsevich.computerstore.service;
 import com.kurtsevich.computerstore.dto.ComputerDto;
 import com.kurtsevich.computerstore.entity.Computer;
 import com.kurtsevich.computerstore.entity.enums.ComputerType;
-import com.kurtsevich.computerstore.exceptions.NotFoundException;
+import com.kurtsevich.computerstore.exception.NotFoundException;
 import com.kurtsevich.computerstore.mapper.ComputerMapper;
 import com.kurtsevich.computerstore.repository.ComputerRepository;
 import lombok.RequiredArgsConstructor;

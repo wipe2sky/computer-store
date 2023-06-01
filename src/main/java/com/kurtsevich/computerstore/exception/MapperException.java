@@ -1,4 +1,4 @@
-package com.kurtsevich.computerstore.exceptions;
+package com.kurtsevich.computerstore.exception;
 
 public class MapperException extends RuntimeException{
     public MapperException(String message) {

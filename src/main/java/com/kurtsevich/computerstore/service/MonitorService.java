@@ -2,7 +2,7 @@ package com.kurtsevich.computerstore.service;
 
 import com.kurtsevich.computerstore.dto.MonitorDto;
 import com.kurtsevich.computerstore.entity.Monitor;
-import com.kurtsevich.computerstore.exceptions.NotFoundException;
+import com.kurtsevich.computerstore.exception.NotFoundException;
 import com.kurtsevich.computerstore.mapper.MonitorMapper;
 import com.kurtsevich.computerstore.repository.MonitorRepository;
 import lombok.RequiredArgsConstructor;

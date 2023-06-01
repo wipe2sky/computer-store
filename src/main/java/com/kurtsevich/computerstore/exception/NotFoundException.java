@@ -1,4 +1,4 @@
-package com.kurtsevich.computerstore.exceptions;
+package com.kurtsevich.computerstore.exception;
 
 public class NotFoundException extends RuntimeException{
     public NotFoundException(String message) {

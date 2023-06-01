@@ -1,6 +1,6 @@
 package com.kurtsevich.computerstore.entity.enums;
 
-import com.kurtsevich.computerstore.exceptions.MapperException;
+import com.kurtsevich.computerstore.exception.MapperException;
 
 import java.util.Objects;
 
